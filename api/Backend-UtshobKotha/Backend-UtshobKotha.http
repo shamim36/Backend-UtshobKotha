@@ -1,4 +1,4 @@
-@Backend_UtshobKotha_HostAddress = http://localhost:5210
+@Backend_UtshobKotha_HostAddress = http://localhost:5067
 
 GET {{Backend_UtshobKotha_HostAddress}}/weatherforecast/
 Accept: application/json
