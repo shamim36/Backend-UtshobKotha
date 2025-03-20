@@ -2,6 +2,7 @@
 using Backend_UtshobKotha.Models.Accounts;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace Backend_UtshobKotha.Controllers
 {
     [Route("api/[controller]")]
@@ -22,10 +23,22 @@ namespace Backend_UtshobKotha.Controllers
                 return BadRequest("Email is required.");
 
 
-
+            
+            
             _context.NewUserRegistration.Add(signUpNewUser);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(PostSignUp), new { id = signUpNewUser.UserID }, signUpNewUser);
+            
+            
+            //return CreatedAtAction(nameof(PostSignUp), new { id = signUpNewUser.UserID }, signUpNewUser);
+            return CreatedAtAction(
+                nameof(PostSignUp),
+                new { id = signUpNewUser.UserID },
+                new
+                   {
+                      Message = "Account created successfully!",
+                      User = signUpNewUser
+                   }
+    );
 
         }
     }

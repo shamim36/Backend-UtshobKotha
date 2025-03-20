@@ -6,6 +6,7 @@ namespace Backend_UtshobKotha.Data
     public class UtshobKothaDbContext(DbContextOptions<UtshobKothaDbContext> options) : DbContext(options)
     {
 
+
         public DbSet<SignUp> NewUserRegistration => Set<SignUp>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -15,7 +16,7 @@ namespace Backend_UtshobKotha.Data
             modelBuilder.Entity<SignUp>().HasData(
                  new SignUp
                  {
-                     UserID = 1,
+                     UserID = "213-35-775",
                      Email = "test@gmail.com",
                      Name = "Shamim",
                      Password = "test",
