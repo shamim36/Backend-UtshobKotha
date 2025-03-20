@@ -28,7 +28,7 @@ namespace Backend_UtshobKotha.Controllers
                 return NotFound("User not found.");
 
             // Validate the password (assuming the password is hashed in the database)
-            if (!BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.Password))
+            if (user.Password != loginRequest.Password) 
                 return Unauthorized("Invalid password.");
 
 

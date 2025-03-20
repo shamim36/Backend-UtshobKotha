@@ -5,7 +5,7 @@
 namespace Backend_UtshobKotha.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class UpdatedLoginDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +15,7 @@ namespace Backend_UtshobKotha.Migrations
                 columns: table => new
                 {
                     Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserID = table.Column<int>(type: "int", nullable: false),
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -28,7 +28,7 @@ namespace Backend_UtshobKotha.Migrations
             migrationBuilder.InsertData(
                 table: "NewUserRegistration",
                 columns: new[] { "Email", "Name", "Password", "Role", "UserID" },
-                values: new object[] { "test@gmail.com", "Shamim", "test", "ADMIN", 1 });
+                values: new object[] { "test@gmail.com", "Shamim", "test", "ADMIN", "213-35-775" });
         }
 
         /// <inheritdoc />

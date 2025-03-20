@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend_UtshobKotha.Migrations
 {
     [DbContext(typeof(UtshobKothaDbContext))]
-    [Migration("20250318174238_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250320131924_UpdatedLoginDatabase")]
+    partial class UpdatedLoginDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,8 +41,8 @@ namespace Backend_UtshobKotha.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Email");
 
@@ -55,7 +55,7 @@ namespace Backend_UtshobKotha.Migrations
                             Name = "Shamim",
                             Password = "test",
                             Role = "ADMIN",
-                            UserID = 1
+                            UserID = "213-35-775"
                         });
                 });
 #pragma warning restore 612, 618
