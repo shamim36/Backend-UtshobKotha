@@ -1,6 +1,8 @@
 ﻿using Backend_UtshobKotha.Data;
 using Backend_UtshobKotha.Models.Accounts;
 using Microsoft.AspNetCore.Mvc;
+using BCrypt.Net;
+
 
 namespace Backend_UtshobKotha.Controllers
 {
@@ -22,10 +24,23 @@ namespace Backend_UtshobKotha.Controllers
                 return BadRequest("Email is required.");
 
 
-
+            signUpNewUser.Password = BCrypt.Net.BCrypt.HashPassword(signUpNewUser.Password); // Hashing the password before saving it to the database
+            
+            
             _context.NewUserRegistration.Add(signUpNewUser);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(PostSignUp), new { id = signUpNewUser.UserID }, signUpNewUser);
+            
+            
+            //return CreatedAtAction(nameof(PostSignUp), new { id = signUpNewUser.UserID }, signUpNewUser);
+            return CreatedAtAction(
+                nameof(PostSignUp),
+                new { id = signUpNewUser.UserID },
+                new
+                   {
+                      Message = "Account created successfully!",
+                      User = signUpNewUser
+                   }
+    );
 
         }
     }

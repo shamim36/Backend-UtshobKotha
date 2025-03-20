@@ -6,6 +6,7 @@ namespace Backend_UtshobKotha.Data
     public class UtshobKothaDbContext(DbContextOptions<UtshobKothaDbContext> options) : DbContext(options)
     {
 
+
         public DbSet<SignUp> NewUserRegistration => Set<SignUp>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
