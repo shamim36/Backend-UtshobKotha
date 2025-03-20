@@ -1,7 +1,7 @@
 # Backend-UtshobKotha
 localhost link for boilerplate - https://localhost:7118/scalar/v1
 
-## To create SQL datadase use - Add-Mitigation Initial Create
+## To create SQL datadase use - Add-Mitigation InitialCreate
 ## To Update Database use - Update-Database
 
 
