@@ -32,8 +32,31 @@ namespace Backend_UtshobKotha.Controllers
             return await CreateEventInternal(eventDto, null, eventDto.EventBannerBase64);
         }
 
-       
-        
+        // Endpoint to update an event with JSON (with optional base64 banner)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEvent(int id, [FromBody] EventDto eventDto)
+        {
+            var existingEvent = await _context.Events.FindAsync(id);
+            if (existingEvent == null)
+            {
+                return NotFound();
+            }
+
+            return await UpdateEventInternal(existingEvent, eventDto, null, eventDto.EventBannerBase64);
+        }
+
+        // Endpoint to update an event with multipart/form-data (with file upload)
+        [HttpPut("update-with-banner/{id}")]
+        public async Task<IActionResult> UpdateEventWithBanner(int id, [FromForm] EventDto eventDto, IFormFile? eventBanner)
+        {
+            var existingEvent = await _context.Events.FindAsync(id);
+            if (existingEvent == null)
+            {
+                return NotFound();
+            }
+
+            return await UpdateEventInternal(existingEvent, eventDto, eventBanner, null);
+        }
 
         private async Task<IActionResult> CreateEventInternal(EventDto eventDto, IFormFile? eventBanner, string? eventBannerBase64)
         {
