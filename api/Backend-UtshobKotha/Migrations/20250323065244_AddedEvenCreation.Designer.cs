@@ -4,6 +4,7 @@ using Backend_UtshobKotha.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend_UtshobKotha.Migrations
 {
     [DbContext(typeof(UtshobKothaDbContext))]
-    partial class UtshobKothaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250323065244_AddedEvenCreation")]
+    partial class AddedEvenCreation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
