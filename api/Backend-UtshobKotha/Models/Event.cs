@@ -44,8 +44,16 @@ namespace Backend_UtshobKotha.Models
         [Range(1, int.MaxValue, ErrorMessage = "Capacity must be at least 1")]
         public int Capacity { get; set; }
 
-        [Required(ErrorMessage = "Price status is required")]
+        [Required(ErrorMessage = "Free or Paid status is required")]
         public bool IsFree { get; set; }
+
+        [Required(ErrorMessage = "Price status is required")]
+        public double price { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "Total Enrolled Must be provided (Default 0)")]
+        public int CurrentEnrolled { get; set; }
+
+
 
         // Store the event banner as a byte array (for the image)
         public byte[]? EventBanner { get; set; }

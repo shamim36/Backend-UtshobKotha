@@ -107,7 +107,9 @@ namespace Backend_UtshobKotha.Controllers
                 Location = eventDto.Location,
                 Capacity = eventDto.Capacity,
                 IsFree = eventDto.IsFree,
-                EventBanner = eventBannerData
+                EventBanner = eventBannerData,
+                price = eventDto.price,
+                CurrentEnrolled = eventDto.CurrentEnrolled
             };
 
             _context.Events.Add(newEvent);
@@ -164,6 +166,8 @@ namespace Backend_UtshobKotha.Controllers
             existingEvent.Location = eventDto.Location;
             existingEvent.Capacity = eventDto.Capacity;
             existingEvent.IsFree = eventDto.IsFree;
+            existingEvent.price = eventDto.price;
+            existingEvent.CurrentEnrolled = eventDto.CurrentEnrolled;
             if (eventBannerData != null) // Only update the banner if new data is provided
             {
                 existingEvent.EventBanner = eventBannerData;
