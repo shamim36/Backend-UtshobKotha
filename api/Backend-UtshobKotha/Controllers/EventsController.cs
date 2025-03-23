@@ -239,5 +239,28 @@ namespace Backend_UtshobKotha.Controllers
             }
             return Ok(eventItem);
         }
+
+
+        // Endpoint to delete an event
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEvent(int id)
+        {
+            var eventToDelete = await _context.Events.FindAsync(id);
+            if (eventToDelete == null)
+            {
+                return NotFound(new { Message = $"Event with ID {id} not found" });
+            }
+
+            // Store the ID and Title for the response message
+            var deletedEventId = eventToDelete.Id;
+            var deletedEventTitle = eventToDelete.Title;
+
+            _context.Events.Remove(eventToDelete);
+            await _context.SaveChangesAsync();
+
+            // Return a 200 OK response with a success message
+            return Ok(new { Message = $"Event with ID {deletedEventId} and title '{deletedEventTitle}' deleted successfully" });
+        }
+        
     }
 }
