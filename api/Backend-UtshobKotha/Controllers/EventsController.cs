@@ -3,6 +3,7 @@ using Backend_UtshobKotha.Dtos;
 using Backend_UtshobKotha.Models;
 using Backend_UtshobKotha.Validation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace Backend_UtshobKotha.Controllers
@@ -242,6 +243,14 @@ namespace Backend_UtshobKotha.Controllers
                 return NotFound();
             }
             return Ok(eventItem);
+        }
+
+        // Endpoint to view all events
+        [HttpGet]
+        public async Task<IActionResult> GetAllEvents()
+        {
+            var events = await _context.Events.ToListAsync();
+            return Ok(events);
         }
 
 
